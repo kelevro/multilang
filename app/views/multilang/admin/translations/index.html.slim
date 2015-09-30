@@ -1,0 +1,53 @@
+.box-info.translation-search-form
+  .row
+    .col-sm-9
+      = simple_form_for @searcher.search, { url: admin_translations_path, method: :get, wrapper: :inline_form, html: { class: 'form-inline' } } do |f|
+        = f.input :lang, collection: @searcher.search.languages_list, input_html: { name: :lang }, include_blank: false
+        = f.input :q, placeholder: 'Search text', input_html: { name: :q, class: 'search-text-filed' }, wrapper_html: { class: 'col-sm-7' }
+        = f.input :complete, collection: { All: :all, Completed: true, Incompleted: false }, input_html: { name: :complete }, include_blank: false
+        = f.button :submit, 'Search', name: nil
+    .col-sm-3
+      button.btn.md-trigger.pull-right.btn-success data-modal="new-translation-popap"
+        = icon 'plus', 'Add Translation'
+.translations-list
+  - @keys.each do |key|
+    div [class="box-info translation-key-#{key.id}"]
+      p
+        = key.key
+        a [class="btn btn-danger btn-xs pull-right ladda-button"
+          href="#{admin_translation_key_path(key)}"
+          data-confirm="Are you shure?"
+          data-method="delete"
+          data-remote="true"
+          data-style="expand-right"]
+          span.ladda-label Delete
+      .row
+        .table-responsive
+          table.table.table-hover
+            tbody
+              - key.translations.each do |translation|
+                tr class="translation-#{translation.id}"
+                  td.col-sm-1
+                    = image_tag translation.language.image.url
+                    | &nbsp;
+                    = translation.language.locale
+                  td[class="col-sm-9 edit-block"
+                    data-value="#{translation.value}"
+                    data-id="#{translation.id}"]
+                    textarea.form-control
+                      = translation.value
+                    .translate-control.hide
+                      button[class="btn btn-success btn-xs update-control ladda-button"
+                        data-style="expand-left"
+                        data-size="xs"
+                        data-action="#{admin_translation_path(translation)}"]
+                        span.ladda-label Update
+                      | &nbsp;
+                      button.btn.btn-warning.btn-xs.cancel-control Cancel
+                  td.col-sm-1.status-column
+                    = status_tag(translation.is_completed, 'Completed', 'Incompleted')
+                  td.col-sm-1.status-action
+                    = status_control translation
+  = will_paginate @keys
+
+  == render partial: 'new_modal', locals: { translation: @translation_key }

@@ -1,0 +1,21 @@
+.multilang{
+  .translations-list{
+    .translate-control{
+      padding-top: 5px;
+    }
+    .table-responsive{
+      overflow-x: visible;
+    }
+  }
+
+  .translation-search-form{
+    .form-inline{
+      .form-group{
+        padding: 0 5px;
+        .search-text-filed{
+          width: 100%;
+        }
+      }
+    }
+  }
+}

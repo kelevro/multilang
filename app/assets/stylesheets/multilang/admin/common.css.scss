@@ -1,0 +1,44 @@
+body.tooltips{
+  padding-top: 0;
+}
+
+.header.content.rows-content-header{
+  margin-left: 20px;
+  .navbar-default{
+    .navbar-nav{
+      a {
+        color: #555555;
+        border-bottom: none;
+        &.active {
+          background-color: #EFEEEE;
+          &:hover {
+            background-color: #EFEEEE;
+          }
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+.multilang{
+  .bread-container{
+    .breadcrumb {
+      padding: 8px 15px;
+      margin-bottom: 20px;
+      list-style: none;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+    }
+  }
+}
+
+.percentage{
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+  text-align: right;
+  width: 50px;
+}

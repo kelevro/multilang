@@ -1,0 +1,6 @@
+= simple_form_for @language, url: url, validate: true do |f|
+  = f.input :locale
+  = f.input :name
+  = f.input :image, as: :file
+  = f.input :is_enable, as: :boolean
+  = f.button :submit

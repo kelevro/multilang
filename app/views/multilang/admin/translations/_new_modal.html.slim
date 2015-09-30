@@ -1,0 +1,12 @@
+div class="md-modal md-fade-in-scale-up" id="new-translation-popap"
+  .md-content
+    h3 New Translation Key
+    div
+      = simple_form_for translation, url: admin_translation_keys_path, validate: true do |f|
+        = f.input :key
+        = f.button :button, 'Add', class: 'btn btn-success'
+        | &nbsp;
+        button.btn.btn-danger.md-close Cancel
+
+.md-overlay
+

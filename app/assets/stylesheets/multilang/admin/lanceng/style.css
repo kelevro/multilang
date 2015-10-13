@@ -75,7 +75,7 @@ blockquote.reply-message{
 }
 .dropdown-menu.dropdown-message ul{white-space: inherit;}
 .dropdown-menu.dropdown-message li a{
-	word-wrap:normal|break-word;
+	word-wrap:normal;
 	white-space: inherit;
 	width: 300px;
 	border-bottom: 1px solid #ddd;

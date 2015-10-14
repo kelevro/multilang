@@ -15,7 +15,7 @@ html
         == render 'multilang/admin/partials/sidebar'
         .body.content.rows.scroll-y.multilang
           .bread-container
-            == render 'admin/partials/flash_message'
+            == render 'partials/flash_message'
             ul.breadcrumb
               = render_breadcrumbs :tag => :li, :separator => ''
           == yield

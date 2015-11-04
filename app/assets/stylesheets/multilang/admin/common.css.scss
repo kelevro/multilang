@@ -35,10 +35,14 @@ body.tooltips{
   }
 }
 
-.percentage{
+.percentage {
   float: left;
   font-weight: bold;
   margin-right: 10px;
   text-align: right;
   width: 50px;
+}
+
+.paginate-container{
+  text-align: center;
 }

@@ -1,50 +1,51 @@
-module Multilang
-  class Admin::TranslationsController < Admin::ApplicationController
+class Multilang::Admin::TranslationsController < Multilang::Admin::ApplicationController
 
-    add_breadcrumb 'Translations', :admin_translations_path
-    before_action :set_searcher, only: [:index]
+  add_breadcrumb 'Translations', :admin_translations_path
+  before_action :set_searcher, only: [:index]
 
-    def index
-      @keys            = @searcher.translation_keys
-      @translation_key = TranslationKey.new
-    end
-
-    def update
-      @translation = find_translation params[:id]
-      @translation.update_attributes value:        params[:value],
-                                    is_completed: true
-      respond_to do |format|
-        format.html { redirect_to admin_translations_url }
-        format.js
-      end
-    end
-
-    def change_status
-      @translation = find_translation(params[:id])
-      @translation.change_status
-      respond_to do |format|
-        format.html { redirect_to admin_translations_url }
-        format.js
-      end
-    end
-
-    private
-
-    def set_searcher
-      @searcher = Searcher.new(get_search)
-    end
-
-    def find_translation(id)
-      Translation.find(id)
-    end
-
-    def get_search
-      Search.new(search_params)
-    end
-
-    def search_params
-      params.permit(:lang, :q, :complete, :page)
-    end
-
+  def index
+    authorize! :index, :multilang_translation
+    @keys            = @searcher.translation_keys
+    @translation_key = Multilang::TranslationKey.new
   end
+
+  def update
+    authorize! :update, :multilang_translation
+    @translation = find_translation params[:id]
+    @translation.update_attributes value:        params[:value],
+                                   is_completed: true
+    respond_to do |format|
+      format.html { redirect_to admin_translations_url }
+      format.js
+    end
+  end
+
+  def change_status
+    authorize! :change_status, :multilang_translation
+    @translation = find_translation(params[:id])
+    @translation.change_status
+    respond_to do |format|
+      format.html { redirect_to admin_translations_url }
+      format.js
+    end
+  end
+
+  private
+
+  def set_searcher
+    @searcher = Multilang::Searcher.new(get_search)
+  end
+
+  def find_translation(id)
+    Multilang::Translation.find(id)
+  end
+
+  def get_search
+    Multilang::Search.new(search_params)
+  end
+
+  def search_params
+    params.permit(:lang, :q, :complete, :page, :key)
+  end
+
 end

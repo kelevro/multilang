@@ -4,10 +4,8 @@ require 'fileutils'
 module Multilang
   class Export
     def run
-      # redis
-      # if Rails.env.development?
-        file
-      # end
+      redis
+      file
     end
 
     private
@@ -27,9 +25,10 @@ module Multilang
         translations = Translation.where(multilang_language_id: lang.id).includes(:key).all
         translations.each do |translation|
           keys = translation.key.key.split('.')
-          set_value data, keys, translation.value
+          @tmp = translation.key.key
+          set_value(data, keys, translation.value)
         end
-        write_file path, lang.locale => data
+        write_file(path, lang.locale => data)
       end
     end
 
@@ -54,11 +53,11 @@ module Multilang
     def set_value(hash, keys, value)
       key = keys.shift
       if keys.is_a?(Array) && keys.present?
-        unless hash.has_key? key
-          hash[key] = {}
-        end
+        hash[key] = {} unless hash.has_key?(key)
+        hash[key] = {} unless hash[key].is_a? Hash
         set_value(hash[key], keys, value)
       else
+        value = value.to_i if value.present? && value.numeric?
         hash[key] = value
       end
     end

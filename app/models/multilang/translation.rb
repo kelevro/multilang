@@ -11,6 +11,20 @@ module Multilang
       end
     end
 
+    def self.langs(default:, lang: nil)
+      query = self.includes(:language).references(:language)
+      if default != 'all'
+        if lang.present?
+          query = query.where("#{table_name}.multilang_language_id = ?
+                    or #{table_name}.multilang_language_id = ?",
+                              default.id, lang.id)
+        else
+          query = query.where("#{table_name}.multilang_language_id = ?", default.id)
+        end
+      end
+      query.order("#{Language.table_name}.is_default desc")
+    end
+
     def change_status
       if is_completed?
         self.update_attribute :is_completed, false
@@ -18,5 +32,6 @@ module Multilang
         self.update_attribute :is_completed, true
       end
     end
+
   end
 end

@@ -1,14 +1,14 @@
+.box-info
+  button.btn.md-trigger.pull-right.btn-success data-modal="new-translation-popap"
+    = icon 'plus', 'Add Translation'
 .box-info.translation-search-form
   .row
-    .col-sm-9
-      = simple_form_for @searcher.search, { url: admin_translations_path, method: :get, wrapper: :inline_form, html: { class: 'form-inline' } } do |f|
-        = f.input :lang, collection: @searcher.search.languages_list, input_html: { name: :lang }, include_blank: false
-        = f.input :q, placeholder: 'Search text', input_html: { name: :q, class: 'search-text-filed' }, wrapper_html: { class: 'col-sm-7' }
-        = f.input :complete, collection: { All: :all, Completed: true, Incompleted: false }, input_html: { name: :complete }, include_blank: false
-        = f.button :submit, 'Search', name: nil
-    .col-sm-3
-      button.btn.md-trigger.pull-right.btn-success data-modal="new-translation-popap"
-        = icon 'plus', 'Add Translation'
+    = simple_form_for @searcher.search, { url: admin_translations_path, method: :get, wrapper: :inline_form, html: { class: 'form-inline' } } do |f|
+      = f.input :key, placeholder: 'Search key', input_html: { name: :key, class: 'search-text-filed' }, wrapper_html: { class: 'col-sm-3' }
+      = f.input :q, placeholder: 'Search text', input_html: { name: :q, class: 'search-text-filed' }, wrapper_html: { class: 'col-sm-5' }
+      = f.input :lang, label: false, collection: @searcher.search.languages_list, input_html: { name: :lang }, include_blank: false, wrapper_html: { class: 'col-sm-1' }
+      = f.input :complete, collection: { All: :all, Completed: true, Incompleted: false }, input_html: { name: :complete }, include_blank: false, wrapper_html: { class: 'col-sm-1' }
+      = f.button :submit, 'Search', name: nil, class: 'col-sm-1'
 .translations-list
   - @keys.each do |key|
     div [class="box-info translation-key-#{key.id}"]
@@ -25,7 +25,7 @@
         .table-responsive
           table.table.table-hover
             tbody
-              - key.translations.each do |translation|
+              - key.translations.langs(@searcher.search.language).each do |translation|
                 tr class="translation-#{translation.id}"
                   td.col-sm-1
                     = image_tag translation.language.image.url
@@ -48,6 +48,8 @@
                     = status_tag(translation.is_completed, 'Completed', 'Incompleted')
                   td.col-sm-1.status-action
                     = status_control translation
-  = will_paginate @keys
+  .box-info.paginate-container
+    = will_paginate @keys, renderer: BootstrapPagination::Rails
+
 
   == render partial: 'new_modal', locals: { translation: @translation_key }

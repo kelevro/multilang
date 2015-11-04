@@ -1,14 +1,10 @@
 namespace :multilang do
-  task pull: :environment do
+  task push: :environment do
     Multilang::Export.new.run
   end
 
-  task push: :environment do
-    if ENV['path'].blank?
-      puts 'multilang:push requires an file or directory to push'
-      next
-    end
-    import = Multilang::Import.new ENV['path']
-    import.run
+  task pull: :environment do
+    force = ENV.has_key?('force') ? true : false
+    Multilang::Import.new(ENV['path'], force).run
   end
 end

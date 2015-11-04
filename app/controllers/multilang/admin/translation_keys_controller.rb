@@ -1,7 +1,7 @@
-module Multilang
-  class Admin::TranslationKeysController < Admin::ApplicationController
+  class Multilang::Admin::TranslationKeysController < Multilang::Admin::ApplicationController
     def create
-      translation_key = TranslationKey.new translation_key_params
+      authorize! :create, :multilang_translation_key
+      translation_key = Multilang::TranslationKey.new translation_key_params
       if translation_key.save!
         flash[:success] = 'Translation key added successfully'
       else
@@ -11,7 +11,8 @@ module Multilang
     end
 
     def destroy
-      @translation_key = TranslationKey.find(params[:id])
+      authorize! :destroy, :multilang_translation_key
+      @translation_key = Multilang::TranslationKey.find(params[:id])
       @translation_key.destroy
       respond_to do |format|
         format.html {redirect_to admin_translations_path}

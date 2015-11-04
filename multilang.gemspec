@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'client_side_validations'
   s.add_dependency 'client_side_validations-simple_form'
   s.add_dependency 'will_paginate'
+  s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency 'autosize-rails'
   s.add_dependency 'ladda-bootstrap-rails'
 

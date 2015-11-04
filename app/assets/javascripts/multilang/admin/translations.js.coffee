@@ -27,14 +27,9 @@ $ ->
   $(document).on 'click', '.state_change', (e)->
     e.preventDefault()
     $this = $(this)
-    console.log $this.data('action')
-    l = Ladda.create($this.parents('.state').find('.ladda-button').get(0))
-    l.start()
     $.ajax
       url: $this.data('action')
       dataType: 'script',
       type: 'patch',
       success: (response) ->
-        l.stop()
       error: ->
-        l.stop()

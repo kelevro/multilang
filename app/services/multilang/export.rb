@@ -57,6 +57,7 @@ module Multilang
         hash[key] = {} unless hash[key].is_a? Hash
         set_value(hash[key], keys, value)
       else
+        value = value.to_i if value.numeric?
         hash[key] = value
       end
     end

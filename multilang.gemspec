@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails'
   s.add_dependency 'pg'
   s.add_dependency 'slim'
-  s.add_dependency 'rmagick'
+  s.add_dependency 'mini_magick'
 
   s.add_dependency 'simple_form'
   s.add_dependency 'client_side_validations'

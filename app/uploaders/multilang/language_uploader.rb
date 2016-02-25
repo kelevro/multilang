@@ -1,6 +1,7 @@
 module Multilang
   class LanguageUploader < CarrierWave::Uploader::Base
-    include CarrierWave::RMagick
+    include CarrierWave::MiniMagick
+
     storage :file
 
     process resize_to_fit: [32, 32]

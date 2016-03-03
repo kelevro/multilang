@@ -8,7 +8,8 @@
       = f.input :q, placeholder: 'Search text', input_html: { name: :q, class: 'search-text-filed' }, wrapper_html: { class: 'col-sm-5' }
       = f.input :lang, label: false, collection: @searcher.search.languages_list, input_html: { name: :lang }, include_blank: false, wrapper_html: { class: 'col-sm-1' }
       = f.input :complete, collection: { All: :all, Completed: true, Incompleted: false }, input_html: { name: :complete }, include_blank: false, wrapper_html: { class: 'col-sm-1' }
-      = f.button :submit, 'Search', name: nil, class: 'col-sm-1'
+      .col-sm-1
+        = f.button :submit, 'Search', name: nil
 .translations-list
   - @keys.each do |key|
     = render 'key_item', key: key, searcher: @searcher

@@ -1,0 +1,16 @@
+div [class="box-info translation-key-#{key.id}"]
+  p
+    = key.key
+    a [class="btn btn-danger btn-xs pull-right ladda-button"
+      href="#{admin_translation_key_path(key)}"
+      data-confirm="Are you shure?"
+      data-method="delete"
+      data-remote="true"
+      data-style="expand-right"]
+      span.ladda-label Delete
+  .row
+    .table-responsive
+      table.table.table-hover
+        tbody
+          - key.translations.langs(@searcher.search.language).each do |translation|
+            = render 'multilang/admin/translations/translation_item', translation: translation

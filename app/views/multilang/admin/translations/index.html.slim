@@ -11,43 +11,7 @@
       = f.button :submit, 'Search', name: nil, class: 'col-sm-1'
 .translations-list
   - @keys.each do |key|
-    div [class="box-info translation-key-#{key.id}"]
-      p
-        = key.key
-        a [class="btn btn-danger btn-xs pull-right ladda-button"
-          href="#{admin_translation_key_path(key)}"
-          data-confirm="Are you shure?"
-          data-method="delete"
-          data-remote="true"
-          data-style="expand-right"]
-          span.ladda-label Delete
-      .row
-        .table-responsive
-          table.table.table-hover
-            tbody
-              - key.translations.langs(@searcher.search.language).each do |translation|
-                tr class="translation-#{translation.id}"
-                  td.col-sm-1
-                    = image_tag translation.language.image.url
-                    | &nbsp;
-                    = translation.language.locale
-                  td[class="col-sm-9 edit-block"
-                    data-value="#{translation.value}"
-                    data-id="#{translation.id}"]
-                    textarea.form-control
-                      = translation.value
-                    .translate-control.hide
-                      button[class="btn btn-success btn-xs update-control ladda-button"
-                        data-style="expand-left"
-                        data-size="xs"
-                        data-action="#{admin_translation_path(translation)}"]
-                        span.ladda-label Update
-                      | &nbsp;
-                      button.btn.btn-warning.btn-xs.cancel-control Cancel
-                  td.col-sm-1.status-column
-                    = status_tag(translation.is_completed, 'Completed', 'Incompleted')
-                  td.col-sm-1.status-action
-                    = status_control translation
+    = render 'key_item', key: key, searcher: @searcher
   .box-info.paginate-container
     = will_paginate @keys, renderer: BootstrapPagination::Rails
 

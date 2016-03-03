@@ -5,3 +5,10 @@ $(".translation-<%= @translation.id %>")
 $(".translation-<%= @translation.id %>")
         .find('.status-action')
         .html("<%= j status_control(@translation) %>");
+
+$(".translation-<%= @translation.id %>")
+    .find('.edit-block')
+    .data('value', "<%= j(@translation.value) %>");
+
+$(".translation-<%= @translation.id %>").find('.exchange').addClass('hide');
+$(".translation-<%= @translation.id %>").find('.check').removeClass('hide');

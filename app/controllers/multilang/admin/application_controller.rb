@@ -22,4 +22,23 @@
         redirect_to main_app.admin_login_path
       end
     end
+
+    private
+
+    def set_searcher
+      @searcher = Multilang::Searcher.new(get_search)
+    end
+
+    def find_translation(id)
+      Multilang::Translation.find(id)
+    end
+
+    def get_search
+      Multilang::Search.new(search_params)
+    end
+
+    def search_params
+      params.permit(:lang, :q, :complete, :page, :key)
+    end
+
   end

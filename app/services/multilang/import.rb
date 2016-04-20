@@ -18,32 +18,37 @@ module Multilang
       if @path.present?
         if @path.directory?
           @path.each_child do |file_path|
-            file(file_path.realpath) if file_path.file?
+            process_file(file_path.realpath) if file_path.file?
           end
         else
-          file(@path)
+          process_file(@path)
         end
       else
         I18n.load_path.each do |file_path|
-          file(file_path)
+          process_file(file_path)
         end
       end
     end
 
     private
 
-    def file(file_path)
+    def process_file(file_path)
       locale   = locale_by_file(file_path)
-      language = Language.where(locale: locale).first
+      language = Language.locale(locale).first
       return if language.blank?
       hash = parse(file_path, locale)
       hash.each do |key, value|
-        translation_key = TranslationKey.where(key: key).first
+        translation_key = TranslationKey.key(key).first
+
         if translation_key.blank?
           translation_key = TranslationKey.create! key: key
         end
-        translation = Translation.where(multilang_language_id:        language.id,
-                                        multilang_translation_key_id: translation_key.id).first
+
+        translation = Translation
+          .where(multilang_language_id:        language.id,
+                 multilang_translation_key_id: translation_key.id)
+          .first
+
         if translation.value.blank? || @force
           translation.value        = value
           translation.is_completed = false

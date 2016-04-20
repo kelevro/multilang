@@ -34,6 +34,7 @@ module Multilang
     scope :sort, -> { order('is_default desc') }
     scope :enable, -> { where(is_enable: true) }
     scope :default, -> { where(is_default: true) }
+    scope :locale, -> (locales) { where(locale: locales) }
 
     after_destroy -> { remove_image! }
     after_create :create_translations

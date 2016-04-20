@@ -33,5 +33,21 @@ describe Multilang::Import do
       described_class.new.run
       expect(Multilang::TranslationKey.where(key: 'greeting').count).to eq(1)
     end
+
+    it 'will not ovirride existing translation' do
+        key = create(:translation_key, key: 'greeting')
+        translation = key.translations.language(@lang).first
+        translation.update_attribute :value, 'Hi, World!'
+        described_class.new(locales_path).run
+        expect(translation.reload.value).to eq('Hi, World!')
+    end
+
+    it 'will ovirride existing translation' do
+        key = create(:translation_key, key: 'greeting')
+        translation = key.translations.language(@lang).first
+        translation.update_attribute :value, 'Hi, World!'
+        described_class.new(locales_path, true).run
+        expect(translation.reload.value).to eq('Hello, World!')
+    end
   end
 end

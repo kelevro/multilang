@@ -38,6 +38,19 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 ```
 
+## Usage
+
+# Export translaitons keys
+
+After adding translations to your locales files
+you can run `rake multilang:pull path=config/locales`, after thet all your
+tralslations will be available in multilang console. If in console key already
+exists this key will be skip. If you want override translation in console you
+can run `rake multilang:pull force`.
+
+`rake multilang:pull` - pull to console all translation from your project
+
+
 TODO:
   1. Extract dependencies
 

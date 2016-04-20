@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Multilang App</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+  <%= stylesheet_link_tag 'multilang/application', media: 'all' %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag '/favicon.ico' %>
+
+</head>
+<body class="tooltips">
+<div class="container">
+  <div class="content-page">
+    <%= render 'multilang/partials/sidebar' %>
+    <div class="body content rows scroll-y multilang">
+      <div class="bread-container">
+        <%= render 'multilang/partials/flash_message' %>
+        <ul class="breadcrumb">
+          <%= render_breadcrumbs :tag => :li, :separator => '' %>
+        </ul>
+      </div><%= yield %>
+
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'multilang/application' %>
+</body>
+</html>

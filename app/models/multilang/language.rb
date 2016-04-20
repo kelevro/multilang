@@ -1,19 +1,35 @@
+# == Schema Information
+#
+# Table name: multilang_languages
+#
+#  id         :integer          not null, primary key
+#  locale     :string           not null
+#  image      :string
+#  name       :string
+#  completed  :integer          default(0), not null
+#  is_default :boolean          default(FALSE), not null
+#  is_enable  :boolean          default(TRUE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 module Multilang
   class Language < ActiveRecord::Base
     mount_uploader :image, LanguageUploader
 
     has_many :translations, class_name: 'Multilang::Translation',
-             foreign_key:               'multilang_language_id', dependent: :destroy
+             foreign_key:               'multilang_language_id',
+             dependent: :destroy
 
     validates :name, presence: true
+
     validates :locale,
               presence:   true,
               length:     { maximum: 2 },
               uniqueness: { case_sensitive: false }
+
     validates :image,
               presence: true, on: :create
-    validates :is_enable,
-              presence: true
 
     scope :sort, -> { order('is_default desc') }
     scope :enable, -> { where(is_enable: true) }

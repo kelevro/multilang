@@ -1,0 +1,45 @@
+<div class="box-info">
+  <a class="btn btn-sm btn-success pull-right" href="<%= new_language_path %>">
+    <%= icon 'plus', 'Add Language' %>
+  </a>
+</div>
+<div class="box-info full languages-list">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <tbody>
+        <% @languages.each do |language| %>
+          <tr>
+            <td class="col-sm-1">
+              <%= image_tag language.image.url %>
+            </td>
+            <td class="col-sm-1">
+              <%= language.locale %>
+            </td>
+            <td class="col-sm-1">
+              <a href="<%= edit_language_path(language) %>">
+                <%= language.name %>
+              </a>
+            </td>
+            <td class="col-sm-6">
+              <a href="<%= translations_path(lang: language.id) %>">
+                <span class="percentage"><%= language.completed %>%</span>
+              </a>
+              <a href="<%= translations_path(lang: language.id) %>">
+                <%= percent_bar language.completed %>
+              </a>
+            </td>
+            <td>
+              <%= status_tag language.is_enable, 'Enable', 'Disable' %>
+            </td>
+            <td>
+              <%= status_tag language.is_default, 'Default', '' %>
+            </td>
+            <td>
+              <%= render partial: 'actions', locals: { language: language } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

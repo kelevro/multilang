@@ -4,8 +4,16 @@ require 'fileutils'
 module Multilang
   class Export
     def run
-      redis
       file
+      I18n.backend.reload!
+    end
+
+    def build_path(locale)
+      path = File.join(Rails.root, Multilang.locale_path, "#{locale}.yml")
+      unless File.exist?(path)
+        FileUtils.touch(path)
+      end
+      path
     end
 
     private
@@ -22,7 +30,9 @@ module Multilang
       Language.all.each do |lang|
         data         = {}
         path         = build_path(lang.locale)
-        translations = Translation.where(multilang_language_id: lang.id).includes(:key).all
+        translations = Translation.where(multilang_language_id: lang.id)
+                                  .includes(:key)
+                                  .all
         translations.each do |translation|
           keys = translation.key.key.split('.')
           @tmp = translation.key.key
@@ -30,17 +40,6 @@ module Multilang
         end
         write_file(path, lang.locale => data)
       end
-    end
-
-    private
-
-    def build_path(locale)
-      path = File.join Rails.root, Multilang.locale_path, "#{locale}.yml"
-      unless File.exist?(path)
-        FileUtils.touch(path)
-      end
-
-      path
     end
 
     def write_file(path, data)

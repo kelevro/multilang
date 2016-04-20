@@ -1,0 +1,16 @@
+<div class="btn-group pull-right state">
+
+  <a class="btn btn-xs dropdown-toggle btn-success" data-toggle="dropdown" href="#">
+    <%= icon('check') %>&nbsp;
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li>
+      <a class="state_change"
+         data-action="<%= change_status_translation_path(translation) %>"
+         href="#">
+      <%= icon('exclamation-circle') %> Mark as incomplete
+    </a>
+  </li>
+</ul>
+</div>

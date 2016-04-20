@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: multilang_translation_keys
+#
+#  id         :integer          not null, primary key
+#  key        :string
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 module Multilang
   class TranslationKey < ActiveRecord::Base
 
@@ -15,8 +25,7 @@ module Multilang
 
     def create_translations
       Multilang::Language.all.each do |lang|
-        Multilang::Translation.create! language: lang,
-                                       key:      self
+        Multilang::Translation.create!(language: lang, key: self)
       end
     end
   end

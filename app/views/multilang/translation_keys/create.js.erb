@@ -1,0 +1,13 @@
+<% if @translation_key.errors[:key].any? %>
+  $('.new-translation-key-field .help-block').remove();
+  $('.new-translation-key-field').addClass('has-error');
+  $('.new-translation-key-field')
+    .append('<div class="help-block"><%= j(@translation_key.errors.get(:key).first) %></div>');
+<% else %>
+  $('.translations-list')
+    .prepend("<%= j(render 'multilang/translations/key_item', key: @translation_key, searcher: @searcher) %>");
+  $('#new-translation-popap').removeClass('md-show').addClass('md-hide');
+  $('.new-translation-key-field input').val('');
+  $('.new-translation-key-field .help-block').remove();
+  $('.new-translation-key-field').removeClass('has-error');
+<% end %>

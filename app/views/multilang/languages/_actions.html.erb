@@ -1,0 +1,31 @@
+<div class="btn-group btn-group-xs">
+  <% unless language.is_default? %>
+    <a class="btn btn-default"
+       data-original-title="Default"
+       data-toggle="tooltip"
+       href="<%= default_language_path(language) %>"
+       title="">
+      <%= icon 'flag' %>
+    </a>
+    <% if language.is_enable? %>
+      <a class="btn btn-default"
+         data-original-title="Disable"
+         data-toggle="tooltip"
+         href="<%= disable_language_path(language) %>"
+         title="">
+        <%= icon 'toggle-off' %>
+      </a>
+    <% else %>
+      <a class="btn btn-default"
+         data-original-title="Enable"
+         data-toggle="tooltip"
+         href="<%= enable_language_path(language) %>"
+         title="">
+        <%= icon 'toggle-on' %>
+      </a>
+    <% end %>
+    <%= link_to 'delete', language_path(language),
+                method: :delete,
+                class: 'btn btn-danger',
+                data: { confirm: 'Are you sure?' } %>
+  <% end %></div>

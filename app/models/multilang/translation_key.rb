@@ -21,6 +21,8 @@ module Multilang
 
     after_create :create_translations
 
+    scope :key, ->(keys) { where(key: keys) }
+
     private
 
     def create_translations

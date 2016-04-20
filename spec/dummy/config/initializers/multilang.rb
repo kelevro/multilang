@@ -1,4 +1,4 @@
 Multilang.configure do |config|
   config.root_path    = :root_path
-  config.force_export = false
+  config.force_export = true
 end

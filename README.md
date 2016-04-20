@@ -28,15 +28,12 @@ rake multilang:install:migrations
 rake db:migrate
 ```
 
-dependencies
-```
-gem 'ladda-bootstrap-rails'
-gem 'client_side_validations'
-gem 'client_side_validations-simple_form'
-gem 'autosize-rails'
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
-```
+## Configure
+
+`config/initializers/multilang.rb`
+`config.root_path` - url for return main app
+`config.force_export` - if set `true` will export after each save translation
+
 
 ## Usage
 
@@ -49,8 +46,4 @@ exists this key will be skip. If you want override translation in console you
 can run `rake multilang:pull force`.
 
 `rake multilang:pull` - pull to console all translation from your project
-
-
-TODO:
-  1. Extract dependencies
 

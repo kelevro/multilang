@@ -12,18 +12,20 @@
                href="<%= translations_path %>">Translations</a>
           </li>
         </ul>
-        <ul class="nav navbar-nav pull-right">
-          <li>
-            <a class="export-button ladda-button"
-               data-spinner-color="#555555"
-               data-style="slide-right"
-               href="<%= export_url %>">
-              <span class="ladda-label">
-                <%= icon('history') %> Export
-              </span>
-            </a>
-          </li>
-        </ul>
+        <% unless Multilang.force_export %>
+          <ul class="nav navbar-nav pull-right">
+            <li>
+              <a class="export-button ladda-button"
+                 data-spinner-color="#555555"
+                 data-style="slide-right"
+                 href="<%= export_url %>">
+                <span class="ladda-label">
+                  <%= icon('history') %> Export
+                </span>
+              </a>
+            </li>
+          </ul>
+        <% end %>
       </div>
     </div>
   </div>

@@ -48,7 +48,7 @@
   <% end %>
 
   <div class="box-info paginate-container">
-    <%= will_paginate @keys, renderer: BootstrapPagination::Rails %>
+    <%= paginate @keys %>
   </div>
   <%= render partial: 'new_modal', locals: { translation: @translation_key } %>
 </div>

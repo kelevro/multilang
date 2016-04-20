@@ -1,6 +1,6 @@
 module Multilang
-  class LanguageUploader < CarrierWave::Uploader::Base
-    include CarrierWave::MiniMagick
+  class LanguageUploader < ::CarrierWave::Uploader::Base
+    include ::CarrierWave::MiniMagick
 
     storage :file
 

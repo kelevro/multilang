@@ -9,10 +9,8 @@ module Multilang
     def initialize(path = nil, force = false)
       @force = force
       if path.present?
-        pn = Pathname.new(path)
-        if pn.relative?
-          @path = pn.realpath
-        end
+        pn    = Pathname.new(path)
+        @path = pn.relative? ? pn.realpath : pn
       end
     end
 
@@ -32,27 +30,27 @@ module Multilang
       end
     end
 
+    private
+
     def file(file_path)
       locale   = locale_by_file(file_path)
       language = Language.where(locale: locale).first
       return if language.blank?
-      hash     = parse(file_path, locale)
+      hash = parse(file_path, locale)
       hash.each do |key, value|
         translation_key = TranslationKey.where(key: key).first
         if translation_key.blank?
           translation_key = TranslationKey.create! key: key
         end
-        translation       = Translation.where(multilang_language_id:        language.id,
-                                              multilang_translation_key_id: translation_key.id).first
+        translation = Translation.where(multilang_language_id:        language.id,
+                                        multilang_translation_key_id: translation_key.id).first
         if translation.value.blank? || @force
-          translation.value = value
+          translation.value        = value
           translation.is_completed = false
           translation.save!
         end
       end
     end
-
-    private
 
     def parse(file_path, locale)
       yml = YAML::load_file(file_path)

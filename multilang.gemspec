@@ -15,11 +15,10 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
-  s.test_files = Dir['test/**/*']
+  s.test_files = Dir['spec/**/*']
 
   s.add_dependency 'rails'
   s.add_dependency 'pg'
-  s.add_dependency 'slim'
   s.add_dependency 'mini_magick'
 
   s.add_dependency 'simple_form'

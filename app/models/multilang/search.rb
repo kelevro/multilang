@@ -5,7 +5,7 @@ module Multilang
 
     def initialize(attributes = {})
       super
-      @lang ||= 'all'
+      @lang     ||= 'all'
       @complete ||= 'all'
     end
 
@@ -16,18 +16,17 @@ module Multilang
     def language
       return @lang_params if @lang_params.present?
       if @lang == 'all'
-        @lang_params = {default: 'all'}
+        @lang_params = { default: 'all' }
       else
         language = Language.find(@lang)
         if language.is_default?
-          @lang_params = {default: language}
+          @lang_params = { default: language }
         else
-          default = Language.where(is_default: true).first
-          @lang_params = {default: default, lang: language}
+          default      = Language.where(is_default: true).first
+          @lang_params = { default: default, lang: language }
         end
       end
       @lang_params
     end
-
   end
 end

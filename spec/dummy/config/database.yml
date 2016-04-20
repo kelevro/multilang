@@ -1,0 +1,15 @@
+development: &default
+  adapter: postgresql
+  database: multilang_development
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+
+test:
+  <<: *default
+  database: multilang_test
+
+production:
+  <<: *default
+  database: multilang_production
+  pool: 30

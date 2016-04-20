@@ -1,0 +1,25 @@
+<div class="box-info translation-key-<%= key.id %>">
+  <p>
+    <%= key.key %>
+    <a class="btn btn-danger btn-xs pull-right ladda-button"
+       data-confirm="Are you shure?"
+       data-method="delete"
+       data-remote="true"
+       data-style="expand-right"
+       href="<%= translation_key_path(key) %>">
+
+      <span class="ladda-label">Delete</span>
+    </a>
+  </p>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <tbody>
+          <% key.translations.langs(@searcher.search.language).each do |translation| %>
+            <%= render 'multilang/translations/translation_item', translation: translation %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

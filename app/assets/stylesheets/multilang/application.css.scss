@@ -1,0 +1,11 @@
+/*
+ *
+ *= require ladda-themeless
+ *= require_self
+ *= require_tree .
+ */
+
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
+ @import "font-awesome-sprockets";
+ @import "font-awesome";

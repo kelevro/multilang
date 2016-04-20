@@ -1,0 +1,7 @@
+$(".translation-<%= @translation.id %>")
+        .find('.status-column')
+        .html("<%= j status_tag(@translation.is_completed?, 'Completed', 'Incompleted') %>");
+
+$(".translation-<%= @translation.id %>")
+        .find('.status-action')
+        .html("<%= j status_control(@translation) %>");

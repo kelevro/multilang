@@ -1,0 +1,30 @@
+<div class="header content rows-content-header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a class="<%= 'active' if current_page?(languages_path) %>"
+               href="<%= languages_path %>">Languages</a>
+          </li>
+          <li>
+            <a class="<%= 'active' if current_page?(translations_path) %>"
+               href="<%= translations_path %>">Translations</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+          <li>
+            <a class="export-button ladda-button"
+               data-spinner-color="#555555"
+               data-style="slide-right"
+               href="<%= export_url %>">
+              <span class="ladda-label">
+                <%= icon('history') %> Export
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="md-modal md-fade-in-scale-up" id="new-translation-popap">
+  <div class="md-content">
+    <h3>New Translation Key</h3>
+    <div>
+      <%= simple_form_for translation, url: translation_keys_path, validate: true, remote: true do |f| %>
+        <%= f.input :key, wrapper_html: {class: 'new-translation-key-field'} %>
+        <%= f.button :button, 'Add', class: 'btn btn-success' %>
+        &nbsp;
+        <button class="btn btn-danger md-close">Cancel</button>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="md-overlay"></div>

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: multilang_translations
+#
+#  id                           :integer          not null, primary key
+#  multilang_language_id        :integer
+#  multilang_translation_key_id :integer
+#  value                        :text
+#  is_completed                 :boolean
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#
+
 module Multilang
   class Translation < ActiveRecord::Base
     belongs_to :language, class_name: 'Multilang::Language',
@@ -16,10 +29,11 @@ module Multilang
       if default != 'all'
         if lang.present?
           query = query.where("#{table_name}.multilang_language_id = ?
-                    or #{table_name}.multilang_language_id = ?",
+                                or #{table_name}.multilang_language_id = ?",
                               default.id, lang.id)
         else
-          query = query.where("#{table_name}.multilang_language_id = ?", default.id)
+          query = query.where("#{table_name}.multilang_language_id = ?",
+                              default.id)
         end
       end
       query.order("#{Language.table_name}.is_default desc")
@@ -27,10 +41,11 @@ module Multilang
 
     def change_status
       if is_completed?
-        self.update_attribute :is_completed, false
+        self.is_completed = false
       else
-        self.update_attribute :is_completed, true
+        self.is_completed = true
       end
+      self.save!
     end
 
   end

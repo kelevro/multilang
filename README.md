@@ -47,7 +47,3 @@ can run `rake multilang:pull force`.
 
 `rake multilang:pull` - pull to console all translation from your project
 
-
-TODO:
-  1. Extract dependencies
-

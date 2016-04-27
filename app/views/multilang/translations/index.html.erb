@@ -48,7 +48,7 @@
   <% end %>
 
   <div class="box-info paginate-container">
-    <%= paginate @keys %>
+    <%= paginate @keys, views_prefix: 'multilang' %>
   </div>
   <%= render partial: 'new_modal', locals: { translation: @translation_key } %>
 </div>

@@ -12,6 +12,9 @@ class Multilang::TranslationsController < Multilang::ApplicationController
     @translation = find_translation params[:id]
     @translation.update_attributes value:        params[:value],
                                    is_completed: true
+
+    Export.new.run if Multilang.force_export
+
     respond_to do |format|
       format.html { redirect_to translations_url }
       format.js

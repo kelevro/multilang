@@ -13,7 +13,7 @@ module Multilang
       query = keyword_query(query)
       query = complete_query(query)
       query.order("#{TranslationKey.table_name}.created_at desc")
-        .paginate(page: @search.page)
+           .page(@search.page)
     end
 
     private

@@ -20,13 +20,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails'
   s.add_dependency 'pg'
   s.add_dependency 'mini_magick'
+  s.add_dependency 'carrierwave'
 
   s.add_dependency 'simple_form'
-  s.add_dependency 'client_side_validations'
-  s.add_dependency 'client_side_validations-simple_form'
-  s.add_dependency 'will_paginate'
-  s.add_dependency 'will_paginate-bootstrap'
-  s.add_dependency 'autosize-rails'
-  s.add_dependency 'ladda-bootstrap-rails'
-
+  s.add_dependency 'kaminari'
+  s.add_dependency 'bootstrap-sass'
+  s.add_dependency 'breadcrumbs_on_rails'
+  s.add_dependency 'font-awesome-sass', '~> 4.5.0'
 end

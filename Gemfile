@@ -6,27 +6,31 @@ group :development, :test do
   gem 'sqlite3'
   gem 'sass-rails'
   gem 'bootstrap-sass'
-  gem 'pry-rails'
-  gem 'pry-byebug'
   gem 'jquery-rails'
   gem 'simple_form'
+  gem 'spring'
+  gem 'kaminari'
+  gem 'breadcrumbs_on_rails'
+  gem 'coffee-rails'
+
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+end
+
+group :test do
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
-  gem 'cancancan'
-  gem 'spring'
   gem 'faker'
-  gem 'will_paginate'
-  gem 'will_paginate-bootstrap'
-  gem 'breadcrumbs_on_rails'
-  gem 'ladda-bootstrap-rails', github: 'vendji/ladda-bootstrap-rails'
-  gem 'client_side_validations', github: 'DavyJonesLocker/client_side_validations'
-  gem 'client_side_validations-simple_form', github: 'DavyJonesLocker/client_side_validations-simple_form'
-  gem 'autosize-rails'
-  gem 'coffee-rails'
-  gem 'better_errors'
+  gem 'launchy'
+
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
 
 gemspec

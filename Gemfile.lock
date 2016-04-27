@@ -1,21 +1,4 @@
 GIT
-  remote: git://github.com/DavyJonesLocker/client_side_validations-simple_form.git
-  revision: f9b38766643646c6879b8fe1526ea27dd9cbeb5f
-  specs:
-    client_side_validations-simple_form (3.2.3)
-      client_side_validations (~> 4.2.3)
-      simple_form (~> 3.2)
-
-GIT
-  remote: git://github.com/DavyJonesLocker/client_side_validations.git
-  revision: f819f7c769d3876fe00926301a037dae28276ed1
-  specs:
-    client_side_validations (4.2.3)
-      jquery-rails (>= 3.1.2, < 5.0.0)
-      js_regex (~> 1.0, >= 1.0.9)
-      rails (>= 4.0.0, < 4.3.0)
-
-GIT
   remote: git://github.com/FortAwesome/font-awesome-sass.git
   revision: b15a8a38d4bddebc904402a017e11efca6637210
   specs:
@@ -30,26 +13,19 @@ GIT
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
 
-GIT
-  remote: git://github.com/vendji/ladda-bootstrap-rails.git
-  revision: 6b8782f357504dd353e8493443637280f0044a4b
-  specs:
-    ladda-bootstrap-rails (0.1.0)
-
 PATH
   remote: .
   specs:
-    multilang (0.0.2)
-      autosize-rails
-      client_side_validations
-      client_side_validations-simple_form
-      ladda-bootstrap-rails
+    multilang (0.0.3)
+      bootstrap-sass
+      breadcrumbs_on_rails
+      carrierwave
+      font-awesome-sass (~> 4.5.0)
+      kaminari
       mini_magick
       pg
       rails
       simple_form
-      will_paginate
-      will_paginate-bootstrap
 
 GEM
   remote: https://rubygems.org/
@@ -93,19 +69,19 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.6)
       execjs
-    autosize-rails (1.18.17)
-      rails (>= 3.1)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     breadcrumbs_on_rails (2.3.1)
     builder (3.2.2)
     byebug (8.2.2)
-    cancancan (1.13.1)
+    callsite (0.0.11)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -118,6 +94,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    cliver (0.3.2)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -128,6 +105,7 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
     database_cleaner (1.5.1)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -138,6 +116,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.6.3)
       i18n (~> 0.5)
+    git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -145,13 +124,20 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    js_regex (1.0.13)
-      regexp_parser (= 0.3.2)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    meta_request (0.4.0)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.1.0)
     method_source (0.8.2)
     mime-types (3.0)
       mime-types-data (~> 3.2015)
@@ -159,9 +145,16 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     pg (0.18.4)
+    phantomjs (2.1.1.0)
+    poltergeist (1.9.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -172,6 +165,9 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     rack (1.6.4)
+    rack-contrib (1.4.0)
+      git-version-bump (~> 0.15)
+      rack (~> 1.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.6)
@@ -199,7 +195,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (11.1.2)
-    regexp_parser (0.3.2)
     rspec-core (3.4.4)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -244,9 +239,9 @@ GEM
     tilt (2.0.2)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    will_paginate (3.1.0)
-    will_paginate-bootstrap (1.0.1)
-      will_paginate (>= 3.0.3)
+    websocket-driver (0.6.3)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -255,23 +250,24 @@ PLATFORMS
 
 DEPENDENCIES
   annotate!
-  autosize-rails
   better_errors
+  binding_of_caller
   bootstrap-sass
   breadcrumbs_on_rails
-  cancancan
   capybara
   carrierwave
-  client_side_validations!
-  client_side_validations-simple_form!
   coffee-rails
   database_cleaner
   factory_girl_rails
   faker
   font-awesome-sass!
   jquery-rails
-  ladda-bootstrap-rails!
+  kaminari
+  launchy
+  meta_request
   multilang!
+  phantomjs
+  poltergeist
   pry-byebug
   pry-rails
   rspec-rails
@@ -280,8 +276,6 @@ DEPENDENCIES
   simple_form
   spring
   sqlite3
-  will_paginate
-  will_paginate-bootstrap
 
 BUNDLED WITH
    1.11.2

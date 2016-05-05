@@ -26,5 +26,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'kaminari'
   s.add_dependency 'bootstrap-sass'
   s.add_dependency 'breadcrumbs_on_rails'
-  s.add_dependency 'font-awesome-sass', '~> 4.5.0'
+  s.add_dependency 'font-awesome-sass'
 end

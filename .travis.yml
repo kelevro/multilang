@@ -15,7 +15,10 @@ sudo: false
 services:
   - postgresql
 
-script: bundle exec rspec spec
+script:
+   - RAILS_ENV=test bundle exec rake db:schema:load --trace
+   - bundle exec rake db:test:prepare
+   - bundle exec rspec spec/
 
 notifications:
   email: false

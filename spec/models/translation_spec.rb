@@ -7,7 +7,7 @@ describe Multilang::Translation, type: :model do
 
   it 'will change language complation' do
     create(:language, completed: 0)
-    translation = create(:translation_key).translations.first
+    translation = create(:translation)
     expect { translation.change_status }
       .to change { translation.language.completed }.from(0).to(100)
   end
@@ -48,5 +48,4 @@ describe Multilang::Translation, type: :model do
         .to change { translation.is_completed }.from(false).to(true)
     end
   end
-
 end

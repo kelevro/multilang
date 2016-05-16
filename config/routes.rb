@@ -1,5 +1,5 @@
 Multilang::Engine.routes.draw do
-  resources :languages, only: [:index, :new, :destroy, :create, :edit, :update] do
+  resources :languages, only: [:index, :new, :destroy, :create, :edit, :update], path: '/' do
     get :default, on: :member
     get :enable, on: :member
     get :disable, on: :member
@@ -8,6 +8,7 @@ Multilang::Engine.routes.draw do
   resources :translations, only: [:index, :update] do
     patch :change_status, on: :member
     post :search, on: :collection
+    patch :save_all, on: :collection
   end
 
   resources :translation_keys, only: [:create, :destroy]

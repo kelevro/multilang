@@ -12,20 +12,32 @@
                href="<%= translations_path %>">Translations</a>
           </li>
         </ul>
-        <% unless Multilang.force_export %>
-          <ul class="nav navbar-nav pull-right">
-            <li>
-              <a class="export-button ladda-button"
+        <ul class="nav navbar-nav pull-right">
+          <% if current_page? controller: 'multilang/translations' %>
+            <li class="save-all-container hide">
+              <a class="save-all-translations ladda-button"
+                 data-action="<%= save_all_translations_path %>"
                  data-spinner-color="#555555"
-                 data-style="slide-right"
-                 href="<%= export_url %>">
+                 data-style="slide-right">
                 <span class="ladda-label">
-                  <%= icon('history') %> Export
+                  Save all (<span class="count">0</span>)
                 </span>
               </a>
             </li>
-          </ul>
-        <% end %>
+          <% end %>
+          <% unless Multilang.force_export %>
+          <li>
+            <a class="export-button ladda-button"
+               data-spinner-color="#555555"
+               data-style="slide-right"
+               href="<%= export_url %>">
+                <span class="ladda-label">
+                  <%= icon('history') %> Export
+                </span>
+            </a>
+          </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ class Multilang::TranslationKeysController < Multilang::ApplicationController
   def create
     @translation_key = Multilang::TranslationKey.new translation_key_params
     @translation_key.save
+    @translation_key.create_translations
     respond_to do |format|
       format.html { redirect_to translations_path }
       format.js

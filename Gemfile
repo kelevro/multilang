@@ -26,11 +26,10 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'faker'
-  gem 'launchy'
-
   gem 'capybara'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'launchy'
 end
 
 gemspec

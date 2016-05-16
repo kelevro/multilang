@@ -9,11 +9,11 @@ if defined?(CarrierWave)
     next if klass.anonymous?
     klass.class_eval do
       def cache_dir
-        "#{Multilang::Engine.root}/spec/support/uploads/tmp"
+        'spec/uploads/tmp'
       end
 
       def store_dir
-        "#{Multilang::Engine.root}/spec/support/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+        "spec/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
       end
     end
   end

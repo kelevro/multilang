@@ -42,6 +42,7 @@ module Multilang
 
         if translation_key.blank?
           translation_key = TranslationKey.create! key: key
+          translation_key.create_translations
         end
 
         translation = Translation

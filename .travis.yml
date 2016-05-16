@@ -5,6 +5,9 @@ rvm:
 
 sudo: false
 
+services:
+  - postgresql
+
 script: bundle exec rspec spec
 
 notifications:

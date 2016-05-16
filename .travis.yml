@@ -8,8 +8,6 @@ rvm:
 
 sudo: false
 
-before_script: "bundle update"
-
 script: bundle exec rspec spec
 
 

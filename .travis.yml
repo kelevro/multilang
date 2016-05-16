@@ -5,5 +5,7 @@ rvm:
 
 sudo: false
 
+script: bundle exec rspec spec
+
 notifications:
   email: false

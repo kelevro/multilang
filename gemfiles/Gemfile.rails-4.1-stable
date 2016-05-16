@@ -1,6 +1,8 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gemspec
+gemspec path: ".."
+
+gem "rails", github: "rails/rails", branch: "4-1-stable"
 
 group :development, :test do
   gem 'annotate', github: 'ctran/annotate_models'

@@ -8,23 +8,19 @@
     <span class="check">
       <%= icon('check') %>
     </span>
-    <span class="exchange hide">
-      <%= icon('exchange') %>
+    <span class="translate-control exchange hide">
+      <button class="btn btn-success btn-xs update-control ladda-button"
+              data-action="<%= translation_path(translation) %>"
+              data-size="xs"
+              data-style="expand-left">
+        <span class="ladda-label">Save</span>
+      </button>
     </span>
   </td>
   <td class="col-sm-9 edit-block"
       data-id="<%= translation.id %>"
       data-value="<%= translation.value %>">
     <textarea class="form-control"><%= translation.value %></textarea>
-    <div class="translate-control hide">
-
-    <button class="btn btn-success btn-xs update-control ladda-button"
-            data-action="<%= translation_path(translation) %>"
-            data-size="xs"
-            data-style="expand-left">
-      <span class="ladda-label">Save</span>
-    </button>
-    &nbsp;
   </td>
   <td class="col-sm-1 status-column">
     <%= status_tag(translation.is_completed, 'Completed', 'Incompleted') %>

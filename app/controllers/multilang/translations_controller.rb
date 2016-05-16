@@ -29,4 +29,14 @@ class Multilang::TranslationsController < Multilang::ApplicationController
       format.js
     end
   end
+
+  def save_all
+    params[:translations].each do |id, value|
+      Multilang::Translation.find(id)
+        .update_attributes value:        value,
+                           is_completed: true
+    end
+
+    render nothing: true
+  end
 end

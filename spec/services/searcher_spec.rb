@@ -11,7 +11,7 @@ describe Multilang::Searcher do
     end
 
     it 'will find by key' do
-      searcher = build_searcher(key: 'hello')
+      searcher = build_searcher(key: @translation_key.key)
       expect(searcher.translation_keys.count).to eq(1)
     end
 

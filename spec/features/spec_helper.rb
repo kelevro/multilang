@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'capybara/rails'
+require 'capybara/rspec'
 require 'capybara/poltergeist'
 
 Capybara.javascript_driver = :poltergeist
@@ -6,7 +8,7 @@ Capybara.ignore_hidden_elements = false
 
 RSpec.configure do |config|
   config.before(:each, js: true) do
-    Capybara.page.driver.resize("1300","1240")
+    Capybara.page.driver.resize('1300', '1240')
     Capybara.page.driver.clear_cookies
   end
 

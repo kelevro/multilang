@@ -19,11 +19,7 @@ module Multilang
               presence:   true,
               uniqueness: true
 
-    after_create :create_translations
-
     scope :key, ->(keys) { where(key: keys) }
-
-    private
 
     def create_translations
       Multilang::Language.all.each do |lang|

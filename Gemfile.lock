@@ -257,7 +257,6 @@ DEPENDENCIES
   bootstrap-sass
   breadcrumbs_on_rails
   capybara
-  carrierwave
   coffee-rails
   database_cleaner
   factory_girl_rails

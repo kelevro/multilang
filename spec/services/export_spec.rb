@@ -18,7 +18,7 @@ describe Multilang::Export do
 
     it 'will have correct yml format' do
       yaml = YAML.load_file(subject.build_path(@lang.locale))
-      expect(yaml[@lang.locale][@key.key]).to eq('hello world')
+      expect(yaml[@lang.reload.locale][@key.key]).to eq('hello world')
     end
   end
 end

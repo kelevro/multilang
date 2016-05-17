@@ -3,8 +3,7 @@ require 'rails_helper'
 describe Multilang::Import do
   describe '#initialize' do
     it 'will set relative path' do
-      expect(described_class.new('config/locales').path)
-        .to eq(Multilang::Engine.root.join('config/locales'))
+      expect(described_class.new('config/locales').path).to eq(Multilang::Engine.root.join('config/locales'))
     end
 
     it 'will set absolute path' do

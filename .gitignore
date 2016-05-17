@@ -8,7 +8,7 @@ spec/dummy/log/*.log
 spec/dummy/tmp/
 spec/dummy/.sass-cache
 spec/dummy/public/uploads
-spec/dummy/config/locales/en.yml
+spec/dummy/config/locales/*.yml
 
 .tags
 .tags_sorted_by_file

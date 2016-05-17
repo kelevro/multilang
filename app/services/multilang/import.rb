@@ -38,6 +38,7 @@ module Multilang
       return if language.blank?
       hash = parse(file_path, locale)
       hash.each do |key, value|
+        next if value.is_a? Array
         translation_key = TranslationKey.key(key).first
 
         if translation_key.blank?

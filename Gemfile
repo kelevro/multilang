@@ -5,12 +5,10 @@ gemspec
 group :development, :test do
   gem 'annotate', github: 'ctran/annotate_models'
   gem 'font-awesome-sass', github: 'FortAwesome/font-awesome-sass'
-  gem 'sqlite3'
   gem 'sass-rails'
   gem 'bootstrap-sass'
   gem 'jquery-rails'
   gem 'simple_form'
-  gem 'spring'
   gem 'kaminari'
   gem 'breadcrumbs_on_rails'
   gem 'coffee-rails'

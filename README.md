@@ -1,3 +1,16 @@
+#Multilang
+[![Build Status](https://travis-ci.org/kelevro/multilang.svg?branch=master)](https://travis-ci.org/kelevro/multilang)
+
+##### Multilang This gem provides a web interface for managing translations for your website
+
+####It allows:
+
+* Search by key
+* Search for text translation
+* Adding and editing languages
+* Adding and editing keys
+* Remove language or key
+
 ## Install
 
 install gem
@@ -55,7 +68,7 @@ end
 
 ![Usage](vendor/assets/images/use.gif)
 
-# Export translaitons keys
+## Export translaitons keys
 
 After adding translations to your locales files you can run
 
@@ -67,3 +80,16 @@ after thet all your tralslations will be available in multilang console. If in c
 
 
 `rake multilang:pull` - pull to console all translation from your project
+
+
+## Export/Import translaitons keys with capistrano
+
+add to `Capfile`:
+
+`require 'multilang/capistrano'`
+
+usage:
+
+get locales `cap production multilang:get_locales`
+
+set locales `cap production multilang:set_locales`

@@ -13,16 +13,15 @@
 
 module Multilang
   class Translation < ActiveRecord::Base
-    belongs_to :language, class_name: 'Multilang::Language',
+    belongs_to :language,
+               class_name:  'Multilang::Language',
                foreign_key: 'multilang_language_id'
-    belongs_to :key, class_name: 'Multilang::TranslationKey',
+
+    belongs_to :key,
+               class_name:  'Multilang::TranslationKey',
                foreign_key: 'multilang_translation_key_id'
 
-    after_save -> do
-      if is_completed_changed?
-        language.recount_translations
-      end
-    end
+    after_save -> { language.recount_translations if is_completed_changed? }
 
     scope :language, ->(language) { where(language: language) }
 
@@ -41,14 +40,8 @@ module Multilang
       query.order("#{Language.table_name}.is_default desc")
     end
 
-    def change_status
-      if is_completed?
-        self.is_completed = false
-      else
-        self.is_completed = true
-      end
-      self.save!
+    def toggle_status!
+      self.update_attribute(:is_completed, !is_completed?)
     end
-
   end
 end

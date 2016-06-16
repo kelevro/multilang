@@ -19,7 +19,7 @@ module Multilang
 
     has_many :translations, class_name: 'Multilang::Translation',
              foreign_key:               'multilang_language_id',
-             dependent: :destroy
+             dependent:                 :destroy
 
     validates :name, presence: true
 

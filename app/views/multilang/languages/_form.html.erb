@@ -2,6 +2,6 @@
   <%= f.input :locale %>
   <%= f.input :name %>
   <%= f.input :image, as: :file %>
-  <%= f.input :is_enable, as: :boolean %>
+  <%= f.input :is_enable, as: :boolean, wrapper: :vertical_boolean %>
   <%= f.button :submit %>
 <% end %>

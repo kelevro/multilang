@@ -8,7 +8,7 @@ describe Multilang::Translation, type: :model do
   it 'will change language complation' do
     create(:language, completed: 0)
     translation = create(:translation)
-    expect { translation.change_status }
+    expect { translation.toggle_status! }
       .to change { translation.language.completed }.from(0).to(100)
   end
 
@@ -35,16 +35,16 @@ describe Multilang::Translation, type: :model do
     end
   end
 
-  describe '#change_status' do
+  describe '#toggle_status!' do
     it 'will mark as uncompleted' do
       translation = create(:translation, is_completed: true)
-      expect { translation.change_status }
+      expect { translation.toggle_status! }
         .to change { translation.is_completed }.from(true).to(false)
     end
 
     it 'will mark as completed' do
       translation = create(:translation, is_completed: false)
-      expect { translation.change_status }
+      expect { translation.toggle_status! }
         .to change { translation.is_completed }.from(false).to(true)
     end
   end

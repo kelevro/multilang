@@ -15,9 +15,7 @@ group :development, :test do
 
   gem 'pry-rails'
   gem 'pry-byebug'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
+  gem 'redis'
 end
 
 group :test do
@@ -30,4 +28,5 @@ group :test do
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'launchy'
+  gem 'fakeredis'
 end

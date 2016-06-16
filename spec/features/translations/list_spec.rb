@@ -215,7 +215,7 @@ feature 'List Translations', js: true do
         end
 
         visit multilang.translations_path
-        save_and_open_screenshot
+
         expect(page).to have_content('Hello, World!')
         expect(page).to have_selector('.status-column span', text: 'Completed')
       end

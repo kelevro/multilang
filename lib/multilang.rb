@@ -7,21 +7,11 @@ require 'simple_form'
 require 'font-awesome-sass'
 
 require 'multilang/engine'
+require 'multilang/config'
+require 'multilang/redis/backend'
+require 'multilang/redis/config'
 
 module Multilang
-  mattr_accessor :locale_path do
-    File.join 'config', 'locales'
-  end
-
-  mattr_accessor :root_path do
-    :root_path
-  end
-
-  mattr_accessor :force_export do
-    false
-  end
-
-  def self.configure
-    yield self
-  end
+  ConfigMissingError = Class.new(StandardError)
+  extend Config
 end

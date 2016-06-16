@@ -8,6 +8,9 @@ module Multilang
       def copy_initializers
         copy_file 'initializers/multilang.rb', 'config/initializers/multilang.rb'
       end
+      def copy_config
+        copy_file 'config/multilang.yml', 'config/multilang.yml'
+      end
     end
   end
 end

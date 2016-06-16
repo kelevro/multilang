@@ -10,6 +10,6 @@ var translation_field = $('.new-translation-key-field');
     .prepend("<%= j(render 'multilang/translations/key_item', key: @translation_key, searcher: @searcher) %>");
   $('#new-translation-popap').removeClass('md-show').addClass('md-hide');
   translation_field.find('input').val('');
-  translation_field.('.help-block').remove();
+  translation_field.find('.help-block').remove();
   translation_field.removeClass('has-error');
 <% end %>

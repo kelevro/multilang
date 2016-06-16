@@ -1,0 +1,12 @@
+development: &default
+#  redis:
+#    host: 'localhost'
+#    port: 6379
+#    db: 0
+#    password: ''
+#    namespace: 'multilang'
+test:
+  <<: *default
+
+production:
+  <<: *default

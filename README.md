@@ -1,4 +1,5 @@
 # Multilang
+
 [![Build Status](https://travis-ci.org/kelevro/multilang.svg?branch=master)](https://travis-ci.org/kelevro/multilang)
 
 ##### Multilang This gem provides a web interface for managing translations for your website
@@ -118,3 +119,6 @@ usage:
 get locales `cap production multilang:get_locales`
 
 set locales `cap production multilang:set_locales`
+
+## TODO
+* Remove Rails dependency

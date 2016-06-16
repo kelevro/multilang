@@ -1,9 +1,9 @@
-#Multilang
+# Multilang
 [![Build Status](https://travis-ci.org/kelevro/multilang.svg?branch=master)](https://travis-ci.org/kelevro/multilang)
 
 ##### Multilang This gem provides a web interface for managing translations for your website
 
-####It allows:
+#### It allows:
 
 * Search by key
 * Search for text translation
@@ -18,6 +18,10 @@ install gem
 ```ruby
 gem 'rails-i18n'
 gem 'multilang', github: 'kelevro/multilang'
+```
+for using `redis` backend (optional)
+```ruby
+gem 'redis'
 ```
 
 add to `routes.rb`
@@ -55,13 +59,34 @@ edit
 
 `config.force_export` - if set `true` will export after each save translation
 
+`config.backends` -   backends list. Available `[:file, :redis]`. `:file` - always enable
+
 for example
 
 ```ruby
 Multilang.configure do |config|
   config.root_path    = :admin_path
   config.force_export = true
+  config.backends << :redis
 end
+```
+
+#### Configure redis backend
+For cofigure redis backend edit config file `config/multilang.yml`
+for example
+```yml
+development: &default
+  redis:
+    host: 'localhost'
+    port: 6379
+    db: 0
+    password: ''
+    namespace: 'multilang'
+test:
+  <<: *default
+
+production:
+  <<: *default
 ```
 
 ## Usage

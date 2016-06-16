@@ -13,6 +13,7 @@ sudo: false
 
 services:
   - postgresql
+  - redis-server
 
 script: bundle exec rspec spec
 

@@ -8,7 +8,9 @@ $(".translation-<%= @translation.id %>")
 
 $(".translation-<%= @translation.id %>")
     .find('.edit-block')
-    .data('value', "<%= j(@translation.value) %>");
+    .data('value', "<%= j(@translation.value) %>")
+    .removeClass('dirty');
 
 $(".translation-<%= @translation.id %>").find('.exchange').addClass('hide');
 $(".translation-<%= @translation.id %>").find('.check').removeClass('hide');
+document.translation_manager.recount_changed_translations();

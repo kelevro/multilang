@@ -37,6 +37,8 @@ class Multilang::TranslationsController < Multilang::ApplicationController
                            is_completed: true)
     end
 
+    Multilang::Export.new.run if ::Multilang.force_export
+
     render nothing: true
   end
 end

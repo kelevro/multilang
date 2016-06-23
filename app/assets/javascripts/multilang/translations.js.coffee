@@ -13,7 +13,7 @@ $ ->
       dataType: 'script',
       success: (response) ->
         l.stop()
-        recount_changed_translations()
+        document.translation_manager.recount_changed_translations()
       error: ->
         l.stop()
 
@@ -25,7 +25,7 @@ $ ->
         .find('.exchange').removeClass('hide')
       $(this).closest('.translation-container')
         .find('.edit-block').addClass('dirty')
-      recount_changed_translations()
+      document.translation_manager.recount_changed_translations()
 
   $(document).on 'click', '.state_change', (e)->
     e.preventDefault()
@@ -55,11 +55,15 @@ $ ->
         location.reload()
       error: ->
         location.reload()
+        
+window.App ||= {}
 
-recount_changed_translations = () ->
-  count = $('.dirty').length
-  if count > 0
-    $('.save-all-container').removeClass('hide')
-    $('.save-all-translations .count').html(count)
-  else
-    $('.save-all-container').addClass('hide')
+class App.TranslationManager
+  
+  recount_changed_translations: ->
+    count = $('.dirty').length
+    if count > 0
+      $('.save-all-container').removeClass('hide')
+      $('.save-all-translations .count').html(count)
+    else
+      $('.save-all-container').addClass('hide')

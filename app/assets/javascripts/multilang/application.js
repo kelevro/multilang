@@ -10,5 +10,6 @@
 (function () {
   $('textarea').autosize();
   Ladda.bind('.ladda-button');
+  document.translation_manager = new App.TranslationManager();
 })();
 

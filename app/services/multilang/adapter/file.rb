@@ -9,10 +9,10 @@ module Multilang
         translations = ::Multilang::Translation
                          .where(multilang_language_id: language.id)
                          .includes(:key)
-                         .all
-        translations.each do |translation|
+
+        translations.find_each do |translation|
           keys = translation.key.key.split('.')
-          set_value(data, keys, translation.value)
+          data.deep_merge!(build_hash(keys, translation.value))
         end
         write_file(path, language.locale => data)
       end
@@ -33,17 +33,13 @@ module Multilang
         path
       end
 
-      # @param [Hash] hash
-      # @param [Array] keys
-      # @param [String] value
-      def set_value(hash, keys, value)
-        key = keys.shift
-        if keys.is_a?(Array) && keys.present?
-          hash[key] = {} unless hash.has_key?(key) || hash[key].is_a?(Hash)
-          set_value(hash[key], keys, value)
+      def build_hash(arr, value)
+        if arr.empty?
+          value
         else
-          value = value.to_i if value.present? && value.numeric?
-          hash[key] = value
+          {}.tap do |hash|
+            hash[arr.shift] = build_hash(arr, value)
+          end
         end
       end
     end

@@ -16,7 +16,7 @@ GIT
 PATH
   remote: .
   specs:
-    multilang (0.0.7)
+    multilang (0.0.8)
       bootstrap-sass
       breadcrumbs_on_rails
       carrierwave
@@ -261,4 +261,4 @@ DEPENDENCIES
   simple_form
 
 BUNDLED WITH
-   1.12.4
+   1.12.5

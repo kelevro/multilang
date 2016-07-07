@@ -1,4 +1,3 @@
-require 'yaml'
 require 'pathname'
 
 module Multilang
@@ -27,6 +26,15 @@ module Multilang
         I18n.load_path.each do |file_path|
           process_file(file_path)
         end
+      end
+    end
+
+    class Redis < self
+      def process_file(file_path)
+        locale   = locale_by_file(file_path)
+        hash = YAML::load_file(file_path)[locale]
+        return if hash.nil?
+        I18n.backend.store_translations(locale, hash)
       end
     end
 

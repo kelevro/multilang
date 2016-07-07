@@ -28,7 +28,7 @@ describe Multilang::Export do
 
     describe 'redis backend' do
       before do
-        @redis = I18n.backend.backends.first.store
+        @redis = I18n.backend.store
       end
 
       it 'will write to redis correct data' do

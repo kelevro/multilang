@@ -1,4 +1,11 @@
 <div class="btn-group btn-group-xs">
+  <a class="btn btn-default"
+     data-original-title="Edit"
+     data-toggle="tooltip"
+     href="<%= edit_language_path(language) %>"
+     title="">
+    <%= icon('edit') %>
+  </a>
   <% unless language.is_default? %>
     <a class="btn btn-default"
        data-original-title="Default"

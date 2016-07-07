@@ -10,13 +10,13 @@
         <% @languages.each do |language| %>
           <tr>
             <td class="col-sm-1">
-              <%= image_tag language.image.url %>
+              <%= image_tag(language.image.url) %>
             </td>
             <td class="col-sm-1">
               <%= language.locale %>
             </td>
             <td class="col-sm-1">
-              <a href="<%= edit_language_path(language) %>">
+              <a href="<%= translations_path(lang: language.id) %>">
                 <%= language.name %>
               </a>
             </td>

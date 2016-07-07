@@ -16,6 +16,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'redis'
+  gem 'rails-i18n'
 end
 
 group :test do

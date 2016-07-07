@@ -17,8 +17,8 @@ feature 'List of languages' do
 
 
   scenario 'will see languages' do
-    expect(page).to have_link(@english.name, href: multilang.edit_language_path(@english))
-    expect(page).to have_link(@russian.name, href: multilang.edit_language_path(@russian))
+    expect(page).to have_link(@english.name, href: multilang.translations_path(lang: @english))
+    expect(page).to have_link(@russian.name, href: multilang.translations_path(lang: @russian))
   end
 
   scenario 'will see correct control buttons for default language' do

@@ -16,7 +16,7 @@ GIT
 PATH
   remote: .
   specs:
-    multilang (0.0.11)
+    multilang (0.0.12)
       bootstrap-sass
       breadcrumbs_on_rails
       carrierwave

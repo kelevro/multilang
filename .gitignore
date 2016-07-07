@@ -11,6 +11,7 @@ spec/dummy/public/uploads
 spec/dummy/config/locales/*.yml
 
 .tags
+tags
 .tags_sorted_by_file
 multilang.sublime-project
 multilang.sublime-workspace

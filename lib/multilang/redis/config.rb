@@ -3,22 +3,21 @@ module Multilang
     class Config
 
       def initialize
-        config     = load_config
-        @host      = config['host'] || 'localhost'
-        @port      = config['port'] || 6379
-        @db        = config['db'] || 0
-        @password  = config['password'] || nil
-        @namespace = config['namespace'] || 'multilang'
+        @config = load_config
       end
 
       def to_h
         result             = {}
-        result[:host]      = @host
-        result[:port]      = @port
-        result[:db]        = @db
-        result[:password]  = @password if @password.present?
-        result[:namespace] = @namespace
+        result[:host]      = @config['host'] || 'localhost'
+        result[:port]      = @config['port'] || 6379
+        result[:db]        = @config['db'] || 0
+        result[:password]  = @config['password'] if @config['password'].present?
+        result[:namespace] = @config['namespace'] || 'multilang'
         result
+      end
+
+      def skip?
+        @config.empty?
       end
 
       private

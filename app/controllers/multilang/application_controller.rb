@@ -4,7 +4,7 @@ class Multilang::ApplicationController < ActionController::Base
 
   before_action :load_translaitons, if: "Rails.env.test?"
 
-  layout 'multilang/application'
+  layout -> (controller) { controller.request.xhr? ? false : 'multilang/application' }
 
   private
 

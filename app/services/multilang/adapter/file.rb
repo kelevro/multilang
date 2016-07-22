@@ -11,6 +11,7 @@ module Multilang
                          .includes(:key)
 
         translations.find_each do |translation|
+          next unless translation.key
           keys = translation.key.key.split('.')
           data.deep_merge!(build_hash(keys, translation.value))
         end

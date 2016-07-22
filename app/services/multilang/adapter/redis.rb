@@ -4,6 +4,7 @@ module Multilang
       # @param [Multilang::Language] language
       def write(language)
         language.translations.includes(:key).find_each do |translation|
+          next unless translation.key
           store_translation(language.locale,
                             translation.key.key,
                             translation.value)

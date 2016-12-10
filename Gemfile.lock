@@ -16,7 +16,7 @@ GIT
 PATH
   remote: .
   specs:
-    multilang (0.0.14)
+    multilang (0.0.16)
       bootstrap-sass
       breadcrumbs_on_rails
       carrierwave
@@ -24,7 +24,7 @@ PATH
       kaminari
       mini_magick
       pg
-      rails (= 4.2.6)
+      rails (>= 4.2.6, < 5.0)
       simple_form
 
 GEM
@@ -265,4 +265,4 @@ DEPENDENCIES
   simple_form
 
 BUNDLED WITH
-   1.12.5
+   1.13.6

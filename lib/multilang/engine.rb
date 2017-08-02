@@ -12,7 +12,7 @@ module Multilang
     end
 
     initializer :load_locales do |app|
-      config.i18n.load_path += app.config.i18n.railties_load_path
+      config.i18n.load_path << app.config.i18n.railties_load_path.to_s
     end
 
     initializer :setup_backends do |app|

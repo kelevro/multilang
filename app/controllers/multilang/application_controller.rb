@@ -2,7 +2,7 @@ class Multilang::ApplicationController < ActionController::Base
 
   add_breadcrumb 'Main app', :main_app_root_path
 
-  before_action :load_translaitons, if: "Rails.env.test?"
+  before_action :load_translaitons
 
   layout -> (controller) { controller.request.xhr? ? false : 'multilang/application' }
 
@@ -25,6 +25,7 @@ class Multilang::ApplicationController < ActionController::Base
   end
 
   def load_translaitons
+		return unless Rails.env.test?
     Multilang::Import::Redis.new.run if I18n.backend.store.keys.blank?
   end
 end

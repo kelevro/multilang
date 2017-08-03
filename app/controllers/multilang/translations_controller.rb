@@ -39,6 +39,6 @@ class Multilang::TranslationsController < Multilang::ApplicationController
 
     Multilang::Export.new.run if ::Multilang.force_export
 
-    render nothing: true
+    render body: nil
   end
 end

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,35 +15,33 @@ ActiveRecord::Schema.define(version: 20160418152808) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "multilang_languages", force: :cascade do |t|
-    t.string   "locale",                     null: false
-    t.string   "image"
-    t.string   "name"
-    t.integer  "completed",  default: 0,     null: false
-    t.boolean  "is_default", default: false, null: false
-    t.boolean  "is_enable",  default: true,  null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+  create_table "multilang_languages", id: :serial, force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "image"
+    t.string "name"
+    t.integer "completed", default: 0, null: false
+    t.boolean "is_default", default: false, null: false
+    t.boolean "is_enable", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "multilang_translation_keys", force: :cascade do |t|
-    t.string   "key"
+  create_table "multilang_translation_keys", id: :serial, force: :cascade do |t|
+    t.string "key"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["key"], name: "index_multilang_translation_keys_on_key"
   end
 
-  add_index "multilang_translation_keys", ["key"], name: "index_multilang_translation_keys_on_key", using: :btree
-
-  create_table "multilang_translations", force: :cascade do |t|
-    t.integer  "multilang_language_id"
-    t.integer  "multilang_translation_key_id"
-    t.text     "value"
-    t.boolean  "is_completed"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+  create_table "multilang_translations", id: :serial, force: :cascade do |t|
+    t.integer "multilang_language_id"
+    t.integer "multilang_translation_key_id"
+    t.text "value"
+    t.boolean "is_completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["multilang_language_id"], name: "index_multilang_translations_on_multilang_language_id"
+    t.index ["multilang_translation_key_id"], name: "index_multilang_translations_on_multilang_translation_key_id"
   end
-
-  add_index "multilang_translations", ["multilang_language_id"], name: "index_multilang_translations_on_multilang_language_id", using: :btree
-  add_index "multilang_translations", ["multilang_translation_key_id"], name: "index_multilang_translations_on_multilang_translation_key_id", using: :btree
 
 end

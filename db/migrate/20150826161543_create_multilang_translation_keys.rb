@@ -1,4 +1,4 @@
-class CreateMultilangTranslationKeys < ActiveRecord::Migration
+class CreateMultilangTranslationKeys < ActiveRecord::Migration[4.2]
   def change
     create_table :multilang_translation_keys do |t|
       t.string :key

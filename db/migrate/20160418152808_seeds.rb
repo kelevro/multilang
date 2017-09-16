@@ -1,4 +1,4 @@
-class Seeds < ActiveRecord::Migration
+class Seeds < ActiveRecord::Migration[4.2]
   def up
     languages = [
       {locale: 'de', name: 'Deutsch', image: 'german.png', is_enable: true, is_default: true},

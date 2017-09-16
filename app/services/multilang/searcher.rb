@@ -8,7 +8,9 @@ module Multilang
     end
 
     def translation_keys
-      query = TranslationKey.joins(translations: :language).distinct
+      query = TranslationKey
+        .select("#{TranslationKey.table_name}.*", "#{TranslationKey.table_name}.created_at")
+        .joins(translations: :language).distinct
       query = key_query(query)
       query = keyword_query(query)
       query = complete_query(query)

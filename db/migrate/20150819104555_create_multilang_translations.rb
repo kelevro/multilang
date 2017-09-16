@@ -1,4 +1,4 @@
-class CreateMultilangTranslations < ActiveRecord::Migration
+class CreateMultilangTranslations < ActiveRecord::Migration[4.2]
   def change
     create_table :multilang_translations do |t|
       t.belongs_to :multilang_language

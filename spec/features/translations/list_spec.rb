@@ -250,8 +250,6 @@ feature 'List Translations', js: true do
 
         find(:css, '.save-all-translations').click
 
-        visit multilang.translations_path
-
         expect(page).to have_content('Hello, World!')
         expect(page).to have_content('Bye!')
 

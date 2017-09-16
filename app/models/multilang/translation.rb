@@ -21,7 +21,9 @@ module Multilang
                class_name:  'Multilang::TranslationKey',
                foreign_key: 'multilang_translation_key_id'
 
-    after_save -> { language.recount_translations if is_completed_changed? }
+    after_save -> {
+			language.recount_translations if saved_change_to_attribute?(:is_completed)
+		}
 
     scope :language, ->(language) { where(language: language) }
 

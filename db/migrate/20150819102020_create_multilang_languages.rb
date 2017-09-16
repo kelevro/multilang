@@ -1,4 +1,4 @@
-class CreateMultilangLanguages < ActiveRecord::Migration
+class CreateMultilangLanguages < ActiveRecord::Migration[4.2]
   def change
     create_table :multilang_languages do |t|
       t.string :locale, null: false
